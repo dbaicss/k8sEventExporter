@@ -132,4 +132,5 @@ deployment配置
    }
 }
 
+
 2.检查k8s集群中的svc和pod都正常启动，并且telnet 9102端口没问题之后，修改prometheus的配置，拉取event exporter的上报数据
