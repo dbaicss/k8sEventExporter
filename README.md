@@ -1,6 +1,7 @@
 # k8sEventExporter
 kubernetes event exporter
 ## 1.配置说明
+```
 Usage of k8sPodEventExporter.exe:
   -bindPort string 0.0.0.0:9900 (default ":9900")
   -confFile string  k8s配置文件 (default "~/.kube/config")
@@ -8,14 +9,16 @@ Usage of k8sPodEventExporter.exe:
   -isInCluster bool 是否部署在k8s cluster (default true)
   -namespace string namespace (default "default")
   -timeInterval int64 获取时间间隔内的非warning的event，单位分钟(default 5)
-
+```
 
 ### (1) k8s集群外部署
+```
 example: 
 k8sPodEventExporter.exe -isInCluster=false 
 -confFile "C:\\Users\\piter\\Desktop\\admin.conf"
-
+```
 ### (2) k8s集群内部署
+```
 编译打包镜像dockerfile文件
 
 FROM golang:1.11-alpine as build
@@ -30,12 +33,12 @@ FROM scratch
 COPY --from=build /src/k8s-event-exporter /k8s-event-exporter
 EXPOSE 9102
 ENTRYPOINT  [ "/k8s-event-exporter" ]
-
+```
+```
 -------------------------------
 k8s v1.15.4版本测试通过，其它没测
 -------------------------------
-
----
+```
 #### svc配置
 ```
 {
@@ -128,11 +131,5 @@ k8s v1.15.4版本测试通过，其它没测
       }
    }
 }
-<<<<<<< HEAD
 ```
 ## 2.检查k8s集群中的svc和pod都正常启动，并且telnet 9102端口没问题之后，修改prometheus的配置，拉取event exporter的上报数据
-=======
-
-
-2.检查k8s集群中的svc和pod都正常启动，并且telnet 9102端口没问题之后，修改prometheus的配置，拉取event exporter的上报数据
->>>>>>> b4817f4527469f84de4a52844d6fb870023ddd07
