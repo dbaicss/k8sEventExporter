@@ -2,23 +2,18 @@
 kubernetes event exporter
 1.配置说明
 Usage of k8sPodEventExporter.exe:
-  -bindPort string
-        0.0.0.0:9900 (default ":9900")
-  -confFile string
-        k8s配置文件 (default "~/.kube/config")
-  -includeNormalEvent
-        是否list包括正常状态的event
-  -isInCluster
-        是否部署在k8s cluster (default true)
-  -namespace string
-        namespace (default "default")
-  -timeInterval int
-        获取多长时间间隔内的非warning的event，单位分钟(default 5)
+  -bindPort string 0.0.0.0:9900 (default ":9900")
+  -confFile string  k8s配置文件 (default "~/.kube/config")
+  -includeNormalEvent bool 是否list包括正常状态的event(default false)
+  -isInCluster bool 是否部署在k8s cluster (default true)
+  -namespace string namespace (default "default")
+  -timeInterval int64 获取时间间隔内的非warning的event，单位分钟(default 5)
 
 
 (1) k8s集群外部署
 example: 
-k8sPodEventExporter.exe -isInCluster=false -confFile "C:\\Users\\piter\\Desktop\\admin.conf"
+k8sPodEventExporter.exe -isInCluster=false 
+-confFile "C:\\Users\\piter\\Desktop\\admin.conf"
 
 (2) k8s集群内部署
 编译打包镜像dockerfile文件
@@ -39,6 +34,7 @@ ENTRYPOINT  [ "/k8s-event-exporter" ]
 -------------------------------
 k8s v1.15.4版本测试通过，其它没测
 -------------------------------
+
 ---
 svc配置
 {
