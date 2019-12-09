@@ -22,7 +22,6 @@ k8sPodEventExporter.exe -isInCluster=false
 编译打包镜像dockerfile文件
 
 FROM golang:1.11-alpine as build
-RUN apk add --no-cache git build-base
 ADD . /src
 WORKDIR /src
 ENV GO111MODULE on
